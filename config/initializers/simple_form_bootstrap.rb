@@ -60,7 +60,7 @@ SimpleForm.setup do |config|
     b.optional :readonly
     b.use :label, class: 'col-sm-3 control-label'
 
-    b.wrapper tag: 'div', class: 'col-sm-9' do |ba|
+    b.wrapper tag: 'div', class: 'col-sm-4' do |ba|
       ba.use :input, class: 'form-control'
       ba.use :error, wrap_with: { tag: 'span', class: 'help-block' }
       ba.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
@@ -84,12 +84,10 @@ SimpleForm.setup do |config|
   config.wrappers :horizontal_boolean, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
     b.use :html5
     b.optional :readonly
+    b.use :label, class: 'col-sm-3 control-label'
 
-    b.wrapper tag: 'div', class: 'col-sm-offset-3 col-sm-9' do |wr|
-      wr.wrapper tag: 'div', class: 'checkbox' do |ba|
-        ba.use :label_input, class: 'col-sm-9'
-      end
-
+    b.wrapper tag: 'div', class: 'col-sm-4' do |wr|
+      wr.use :input, type: 'checkbox'
       wr.use :error, wrap_with: { tag: 'span', class: 'help-block' }
       wr.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
     end

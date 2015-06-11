@@ -2,7 +2,7 @@ class CreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
       t.string :name
-      t.boolean :sex
+      t.string :sex
       t.string :school
       t.string :highschool
       t.string :city

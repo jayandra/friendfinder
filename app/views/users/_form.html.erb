@@ -1,49 +1,26 @@
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<%= simple_form_for @user, html: { class: 'form-horizontal' },
+  wrapper: :horizontal_form,
+  wrapper_mappings: {
+    check_boxes: :horizontal_radio_and_checkboxes,
+    radio_buttons: :horizontal_radio_and_checkboxes,
+    file: :horizontal_file_input,
+    boolean: :horizontal_boolean
+  } do |f| %>
+  <%= f.error_notification %>
 
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :sex, collection: ["Male", "Female"], include_blank: false %>
+    <%= f.input :school %>
+    <%= f.input :highschool %>
+    <%= f.input :city %>
+    <%= f.input :photo %>
+    <%= f.input :views %>
+    <%= f.input :likes %>
+  </div>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :sex %><br>
-    <%= f.check_box :sex %>
-  </div>
-  <div class="field">
-    <%= f.label :school %><br>
-    <%= f.text_field :school %>
-  </div>
-  <div class="field">
-    <%= f.label :highschool %><br>
-    <%= f.text_field :highschool %>
-  </div>
-  <div class="field">
-    <%= f.label :city %><br>
-    <%= f.text_field :city %>
-  </div>
-  <div class="field">
-    <%= f.label :photo %><br>
-    <%= f.text_field :photo %>
-  </div>
-  <div class="field">
-    <%= f.label :views %><br>
-    <%= f.number_field :views %>
-  </div>
-  <div class="field">
-    <%= f.label :likes %><br>
-    <%= f.number_field :likes %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions control-label col-sm-6">
+    <%= f.button :submit, class: "btn btn-success" %>
+    <%= link_to 'Back', users_path, class: "btn btn-link" %>
   </div>
 <% end %>

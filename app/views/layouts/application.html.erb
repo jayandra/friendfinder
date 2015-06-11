@@ -24,7 +24,7 @@
     <div class="col-md-6 center-text">
       <% flash.each do |name, msg| %>
         <% if ["notice", "alert", "error"].include? name %>
-          <%= content_tag :div, :class => "center-text alert #{name == 'success' ? "alert-success" : "alert-danger" }" do %>
+          <%= content_tag :div, :class => "center-text alert #{name == 'alert' ? "alert-success" : "alert-danger" }" do %>
             <a class="close" data-dismiss="alert" href="#">×</a>
             <%= msg %>
           <% end %>
