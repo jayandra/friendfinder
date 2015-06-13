@@ -62,7 +62,9 @@ class UsersController < ApplicationController
   end
 
   def search
-    p "in search"
+    @query_text = params[:query]
+    @trending_users = User.where("name like :c1 or school like :c1 or highschool like :c1 or city like :c1", :c1=>"%#{@query_text}%")
+    render "welcome/index"
   end
 
   private
